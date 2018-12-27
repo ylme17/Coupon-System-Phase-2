@@ -1,0 +1,49 @@
+<!--buttons to route to other components-->
+<div class="buttons">
+  <button class="btn btn-outline-primary" id="button" (click)="routeToByPrice()">Coupons by Price</button>
+  <button class="btn btn-outline-primary" id="button" (click)="routeToByType()">Coupons by Type</button>
+</div>
+
+<br>
+<!--input for search-->
+<input class="form-control" *ngIf="purchasedCoupons.length > 0" type="text" [(ngModel)]="searchString" placeholder="Search.." id="search">
+
+<!--display coupons in cards with ngFor-->
+<div class="container">
+  <div class=" d-flex flex-wrap justify-content-center">
+    <div class="card" *ngFor="let coup of purchasedCoupons | filter : 'title' : searchString" id="card">
+      <button style="background:white" data-toggle="modal" data-target="#myModal" (click)="openCoupon(coup.id)">
+        <img class="card-img-top" [src]=coup.image alt="Card image cap" id="cardImg">
+        <div class="card-body">
+          <h4 class="card-title text-center">{{coup.title}}</h4>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!--popup window opens when click on card and display coupon details-->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h4 class="modal-title">
+          <h4 class="card-title text-center">{{couponOpen.title}}</h4>
+        </h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <img class="card-img-top" [src]=couponOpen.image alt="Card image cap" id="modalImg">
+        <div class="card-body">
+          <p class="card-text text-center">{{couponOpen.type}}</p>
+          <p class="card-text text-center">{{couponOpen.message}}</p>
+          <p class="card-text">price - {{couponOpen.price}}$</p>
+          <p class="card-text">expires {{couponOpen.endDate}}</p>
+          </div>
+      </div>
+      
+    </div>
+  </div>
+</div>

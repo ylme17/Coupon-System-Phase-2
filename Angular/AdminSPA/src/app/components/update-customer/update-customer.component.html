@@ -1,0 +1,29 @@
+<!--form for update customer-->
+<form [formGroup]="myForm">
+  <button class="btn btn-outline-success" (click)="backToCustomers()"><i class="fas fa-long-arrow-alt-left"></i> Back</button>
+  <legend>Update Customer</legend>
+
+  <div class="form-group">
+    <label>ID</label>
+    <input type="number" class="form-control" formControlName="id" disabled [(ngModel)]="customerUpdate.id">
+  </div>
+
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" class="form-control" formControlName="name" disabled [(ngModel)]="customerUpdate.name">
+  </div>
+
+  <div class="form-group">
+    <label>Password</label>
+    <input type="password" class="form-control" formControlName="password" placeholder="Password" [(ngModel)]="customerUpdate.password" 
+      [ngClass]="{ 'is-invalid': myForm.controls.password.errors && (myForm.controls.password.touched || myForm.controls.password.dirty) }">
+    <div *ngIf="myForm.controls.password.errors && (myForm.controls.password.touched || myForm.controls.password.dirty)" class="invalid-feedback">
+      <small *ngIf="myForm.controls.password.errors.required">Password is required</small>
+      <small *ngIf="myForm.controls.password.errors.minlength">Password must be at least 5 characters</small>
+      <small *ngIf="myForm.controls.password.errors.maxlength">Password must be maximum 8 characters</small>
+    </div>
+  </div>
+
+  <!--button become enable only when the form valid-->
+  <button (click)="updateCustomer()" [disabled]="!myForm.valid" class="btn btn-success">UPDATE CUSTOMER</button>
+</form>

@@ -1,0 +1,25 @@
+<!--navigation bar-->
+<nav class="navbar fixed-top navbar-expand-lg bg-dark navbar-dark">
+    <ul class="navbar-nav">
+        <li class="nav-item active">
+            <a class="nav-link" routerLink="/"><i class="fas fa-home"></i> Home</a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" routerLink="/createcoupon"><i class="fas fa-plus"></i> Create Coupon</a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" routerLink="/getallcoupons"><i class="fas fa-list-ul"></i> All Coupons</a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" routerLink="/getinfo"><i class="fas fa-info-circle"></i> Company details</a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" (click)="logOut()">log out <i class="fas fa-sign-out-alt"></i></a>
+        </li>
+    </ul>
+</nav>
+<br><br>
+<br><br>
+<router-outlet></router-outlet>
+<br><br>
+<br><br>

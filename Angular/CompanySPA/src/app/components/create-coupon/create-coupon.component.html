@@ -1,0 +1,111 @@
+<!--form for create coupon-->
+<form novalidate [formGroup]="myForm">
+  <legend>Create Coupon</legend>
+
+  <div class="form-group">
+    <label>Title</label>
+    <input type="text" class="form-control" formControlName="title" placeholder="Title" [(ngModel)]="couponAdd.title" 
+      [ngClass]="{ 'is-invalid': myForm.controls.title.errors && (myForm.controls.title.touched || myForm.controls.title.dirty) }">
+    <div *ngIf="myForm.controls.title.errors && (myForm.controls.title.touched || myForm.controls.title.dirty)" class="invalid-feedback">
+      <small *ngIf="myForm.controls.title.errors.required">Title is required</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Start Date</label>
+    <input type="date" class="form-control" value="{{currentDate | date:'yyyy-MM-dd'}}" disabled>
+  </div>
+
+  <div class="form-group">
+    <label>End Date</label>
+    <input type="date" class="form-control" formControlName="endDate" [(ngModel)]="couponAdd.endDate" 
+      [ngClass]="{ 'is-invalid': myForm.controls.endDate.errors && (myForm.controls.endDate.touched || myForm.controls.endDate.dirty) }">
+    <div *ngIf="myForm.controls.endDate.errors && (myForm.controls.endDate.touched || myForm.controls.endDate.dirty)" class="invalid-feedback">
+      <small *ngIf="myForm.controls.endDate.errors.required">End Date is required</small>
+      <!--<small *ngIf="myForm.controls.endDate.errors.date">End Date must be greater/equal than today</small>-->
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Amount</label>
+    <input type="number" class="form-control" formControlName="amount" placeholder="Amount" [(ngModel)]="couponAdd.amount" 
+      [ngClass]="{ 'is-invalid': myForm.controls.amount.errors && (myForm.controls.amount.touched || myForm.controls.amount.dirty) }">
+    <div *ngIf="myForm.controls.amount.errors && (myForm.controls.amount.touched || myForm.controls.amount.dirty)" class="invalid-feedback">
+      <small *ngIf="myForm.controls.amount.errors.required">Amount is required</small>
+      <small *ngIf="myForm.controls.amount.errors.min">Amount must be at least 1</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Type</label>
+    <select class="form-control" formControlName="type" [(ngModel)]="couponAdd.type" 
+      [ngClass]="{ 'is-invalid': myForm.controls.type.errors && myForm.controls.type.touched }">
+      <option *ngFor="let type of types" [value]="type">{{type}}</option>
+    </select>
+    <div *ngIf="myForm.controls.type.errors && myForm.controls.type.touched" class="invalid-feedback">
+      <small *ngIf="myForm.controls.type.errors.required">Type is required</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Message</label>
+    <input type="text" class="form-control" formControlName="message" placeholder="Message" [(ngModel)]="couponAdd.message" 
+      [ngClass]="{ 'is-invalid': myForm.controls.message.errors && (myForm.controls.message.touched || myForm.controls.message.dirty) }">
+    <div *ngIf="myForm.controls.message.errors && (myForm.controls.message.touched || myForm.controls.message.dirty)" class="invalid-feedback">
+      <small *ngIf="myForm.controls.message.errors.required">Message is required</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Price</label>
+    <input type="number" class="form-control" formControlName="price" placeholder="Price" [(ngModel)]="couponAdd.price" 
+      [ngClass]="{ 'is-invalid': myForm.controls.price.errors && (myForm.controls.price.touched || myForm.controls.price.dirty) }">
+    <div *ngIf="myForm.controls.price.errors && (myForm.controls.price.touched || myForm.controls.price.dirty)" class="invalid-feedback">
+      <small *ngIf="myForm.controls.price.errors.required">Price is required</small>
+      <small *ngIf="myForm.controls.price.errors.min">Price must be at least 1</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Image</label>
+    <input type="text" class="form-control" formControlName="image" placeholder="Image URL" [(ngModel)]="couponAdd.image" 
+      [ngClass]="{ 'is-invalid': myForm.controls.image.errors && (myForm.controls.image.touched || myForm.controls.image.dirty) }">
+    <div *ngIf="myForm.controls.image.errors && (myForm.controls.image.touched || myForm.controls.image.dirty)" class="invalid-feedback">
+      <small *ngIf="myForm.controls.image.errors.required">Image is required</small>
+    </div>
+  </div>
+
+  <!--button become enable only when the form valid-->
+  <button (click)="addCoupon()" [disabled]="!myForm.valid" class="btn btn-success">ADD COUPON</button>
+</form>
+
+<br>
+<!--table shows the added coupon with the generated id-->
+<table class="table table-striped table-bordered" *ngIf="showTable">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Amount</th>
+      <th>Type</th>
+      <th>Message</th>
+      <th>Price</th>
+      <th>Image</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{couponAdded.id}}</td>
+      <td>{{couponAdded.title}}</td>
+      <td>{{couponAdded.startDate}}</td>
+      <td>{{couponAdded.endDate}}</td>
+      <td>{{couponAdded.amount}}</td>
+      <td>{{couponAdded.type}}</td>
+      <td>{{couponAdded.message}}</td>
+      <td>{{couponAdded.price}}</td>
+      <td><img [src]=couponAdded.image></td>
+    </tr>
+  </tbody>
+</table>

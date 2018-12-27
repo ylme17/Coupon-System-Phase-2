@@ -1,0 +1,28 @@
+.buttons{
+    margin-left: 36%;
+    width: 30%;
+}
+#button{
+    margin: 10px
+}
+form{
+    margin-left: 35%;
+    width: 30%;
+}
+#search{
+    margin-left: 12.5%;
+    width: 75%;
+}
+#card{
+    width: 25%;
+    height: 290px;
+    margin: 4%;
+}
+#cardImg{
+    height: 200px;
+    width: 100%;
+}
+#modalImg{
+    height: 300px;
+    width: 100%;
+}

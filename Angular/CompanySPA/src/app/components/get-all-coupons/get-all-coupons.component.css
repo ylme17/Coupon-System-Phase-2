@@ -1,0 +1,21 @@
+.buttons{
+    margin-left: 30%;
+    width: 40%;
+}
+#button{
+    margin: 10px
+}
+#searchAndTable{
+    margin-left: 10%;
+    width: 80%;
+}
+.dates{
+    width: 10%
+}
+.message{
+    width: 20%
+}
+img{
+    width: 100px;
+    height: 70px;
+}

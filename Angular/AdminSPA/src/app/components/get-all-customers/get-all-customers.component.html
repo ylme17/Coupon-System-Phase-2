@@ -1,0 +1,24 @@
+<!--input for search-->
+<input class="form-control" type="text" name="serachString" [(ngModel)]="searchString" placeholder="Search.." id="searchAndTable">
+
+<!--table for all customers-->
+<table id="searchAndTable" class="table table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th id="id">ID</th>
+      <th>Name</th>
+      <th id="password">Password</th>
+      <th id="delete">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor = "let cust of customers | filter : 'name' : searchString">
+      <td (click)="routeToUpdate(cust.id)">{{cust.id}}</td>
+      <td (click)="routeToUpdate(cust.id)">{{cust.name}}</td>
+      <td (click)="routeToUpdate(cust.id)">{{cust.password}}</td>
+      <td class="text-center"><button type="button" (click)="deleteCustomer(cust.id)" class="btn btn-danger btn-sm">
+          <i class="fas fa-trash-alt"></i>
+        </button></td>
+    </tr>
+  </tbody>
+</table>

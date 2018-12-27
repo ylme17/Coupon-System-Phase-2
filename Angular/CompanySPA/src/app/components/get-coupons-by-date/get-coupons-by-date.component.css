@@ -1,0 +1,19 @@
+.buttons{
+    margin-left: 33%;
+    width: 35%;
+}
+#button{
+    margin: 10px;
+}
+.dateInput{
+    margin-left: 35%;
+    width: 30%
+}
+#searchAndTable{
+    margin-left: 10%;
+    width: 80%;
+}
+img{
+    width: 100px;
+    height: 70px;
+}

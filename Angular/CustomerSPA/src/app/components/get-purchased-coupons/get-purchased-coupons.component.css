@@ -1,0 +1,24 @@
+.buttons{
+    margin-left: 37%;
+    width: 25%;
+}
+#button{
+    margin: 10px;
+}
+#search{
+    margin-left: 12.5%;
+    width: 75%;
+}
+#card{
+    width: 25%;
+    height: 290px;
+    margin: 4%;
+}
+#cardImg{
+    height: 200px;
+    width: 100%;
+}
+#modalImg{
+    height: 300px;
+    width: 100%;
+}

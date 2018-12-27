@@ -1,0 +1,40 @@
+.buttons{
+    margin-left: 45%;
+}
+#button{
+    margin: 10px;
+}
+.typeInput{
+    margin-left: 35%;
+    width: 30%;
+}
+#search{
+    margin-left: 12.5%;
+    width: 75%;
+}
+#card{
+    width: 25%;
+    height: 290px;
+    margin: 4%;
+}
+.purchasedRibbon{
+    width: 150px;
+    background: rgb(10, 144, 233);
+    position: absolute;
+    top: 25px;
+    left: 0px;
+    text-align: center;
+    line-height: 50px;
+    letter-spacing: 1px;
+    color: #f0f0f0;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-20deg);
+}
+#cardImg{
+    height: 200px;
+    width: 100%;
+}
+#modalImg{
+    height: 300px;
+    width: 100%;
+}

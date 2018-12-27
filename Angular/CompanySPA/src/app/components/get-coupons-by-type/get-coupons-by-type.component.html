@@ -1,0 +1,54 @@
+<!--buttons to route between components-->
+<div class="buttons">
+  <button class="btn btn-outline-primary" id="button" (click)="routeToCoupons()">All Coupons</button>
+  <button class="btn btn-outline-primary" id="button" (click)="routeToByDate()">Coupons by Date</button>
+  <button class="btn btn-outline-primary" id="button" (click)="routeToByPrice()">Coupons by Price</button>
+</div>
+
+<div>
+  <!--select type-->
+  <div class="typeInput">
+    <legend>Choose Type</legend>
+    <select (change)="getCouponsByType()" class="form-control" [(ngModel)]="couponsGet.type">
+      <option *ngFor="let type of types" [value]="type">{{type}}</option>
+    </select>
+  </div>
+
+  <br>
+  <!--input for search function-->
+  <input *ngIf="showCouponsByType" class="form-control" type="text" [(ngModel)]="searchString" placeholder="Search.." id="searchAndTable">
+
+  <!--table for coupons by type from DB-->
+  <table *ngIf="showCouponsByType" id="searchAndTable" class="table table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Start date</th>
+        <th>End date</th>
+        <th>Amount</th>
+        <th>Type</th>
+        <th>Message</th>
+        <th>Price</th>
+        <th>Image</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let coup of couponsByType | filter : 'title' : searchString">
+        <td (click)="routeToUpdate(coup.id)">{{coup.id}}</td>
+        <td (click)="routeToUpdate(coup.id)">{{coup.title}}</td>
+        <td (click)="routeToUpdate(coup.id)">{{coup.startDate}}</td>
+        <td (click)="routeToUpdate(coup.id)">{{coup.endDate}}</td>
+        <td (click)="routeToUpdate(coup.id)">{{coup.amount}}</td>
+        <td (click)="routeToUpdate(coup.id)">{{coup.type}}</td>
+        <td (click)="routeToUpdate(coup.id)">{{coup.message}}</td>
+        <td (click)="routeToUpdate(coup.id)">{{coup.price}}</td>
+        <td (click)="routeToUpdate(coup.id)"><img [src]=coup.image></td>
+        <td class="text-center"><button type="button" (click)="deleteCoupon(coup.id)" class="btn btn-danger btn-sm">
+          <i class="fas fa-trash-alt"></i>
+        </button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
