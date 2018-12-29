@@ -4,7 +4,7 @@
 
   <div class="form-group">
     <label>Title</label>
-    <input type="text" class="form-control" formControlName="title" placeholder="Title" [(ngModel)]="couponAdd.title" 
+    <input type="text" class="form-control" maxlength="15" formControlName="title" placeholder="Title" [(ngModel)]="couponAdd.title" 
       [ngClass]="{ 'is-invalid': myForm.controls.title.errors && (myForm.controls.title.touched || myForm.controls.title.dirty) }">
     <div *ngIf="myForm.controls.title.errors && (myForm.controls.title.touched || myForm.controls.title.dirty)" class="invalid-feedback">
       <small *ngIf="myForm.controls.title.errors.required">Title is required</small>
@@ -22,7 +22,6 @@
       [ngClass]="{ 'is-invalid': myForm.controls.endDate.errors && (myForm.controls.endDate.touched || myForm.controls.endDate.dirty) }">
     <div *ngIf="myForm.controls.endDate.errors && (myForm.controls.endDate.touched || myForm.controls.endDate.dirty)" class="invalid-feedback">
       <small *ngIf="myForm.controls.endDate.errors.required">End Date is required</small>
-      <!--<small *ngIf="myForm.controls.endDate.errors.date">End Date must be greater/equal than today</small>-->
     </div>
   </div>
 

@@ -10,6 +10,8 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Component;
 
 import coupon.sys.core.facade.AdminFacadeInterface;
@@ -33,11 +35,10 @@ public class AdminFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
-        
-        if (req.getSession().getAttribute("facade") == null) {           	
+        HttpSession session = req.getSession(false);
+
+        if (session == null || session.getAttribute("AdminFacade") == null || !(session.getAttribute("AdminFacade") instanceof AdminFacadeInterface)) {
             res.sendRedirect("http://localhost:8080/login.html");
-        } else if(!(req.getSession().getAttribute("facade") instanceof AdminFacadeInterface)){
-        	res.sendRedirect("http://localhost:8080/login.html");
         } else {
             chain.doFilter(request, response);
         }		

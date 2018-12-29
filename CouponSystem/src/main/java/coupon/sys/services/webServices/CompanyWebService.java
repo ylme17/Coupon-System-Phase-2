@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.RestController;
 import coupon.sys.core.beans.Company;
 import coupon.sys.core.beans.Coupon;
 import coupon.sys.core.beans.CouponType;
-import coupon.sys.core.couponSystem.CouponSystem;
 import coupon.sys.core.exceptions.CouponSystemException;
 import coupon.sys.core.facade.ClientFacade;
 import coupon.sys.core.facade.CompanyFacade;
@@ -39,11 +38,6 @@ import coupon.sys.core.facade.CompanyFacade;
 @RequestMapping("/company")
 public class CompanyWebService {
 
-//	private ClientFacade getFacade(HttpServletRequest request) throws CouponSystemException {
-//		ClientFacade companyFacade = CouponSystem.getInstance().login("teva", "123456");
-//		return companyFacade;
-//	}
-
 	/**
 	 * this method get facade for company from the session
 	 * @param request
@@ -51,7 +45,7 @@ public class CompanyWebService {
 	 * @throws @CouponSystemException
 	 */
 	private ClientFacade getFacade(HttpServletRequest request) throws CouponSystemException {
-		CompanyFacade companyFacade = (CompanyFacade) request.getSession().getAttribute("facade");
+		CompanyFacade companyFacade = (CompanyFacade) request.getSession().getAttribute("CompanyFacade");
 		return companyFacade;
 	}
 

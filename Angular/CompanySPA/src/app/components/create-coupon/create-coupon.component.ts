@@ -20,10 +20,6 @@ export class CreateCouponComponent implements OnInit {
   
   //in the constructor we provide SharedDataService for service and FormBuilder for form validation
   constructor(private _sharedDataService:SharedDataService, private _formBuilder:FormBuilder) { 
-    //this.currentDate.setSeconds(0);
-    //this.currentDate.setHours(0);
-    //this.currentDate.setMinutes(0);
-    //this.currentDate.setMilliseconds(0);
   }
 
   //initialize form validation
@@ -35,7 +31,7 @@ export class CreateCouponComponent implements OnInit {
   formValidation(){
     this.myForm = this._formBuilder.group({
       title: ['', Validators.required],
-      endDate: ['', Validators.required],// this.beforeToday.bind(this)]],
+      endDate: ['', Validators.required],
       amount: ['', [Validators.required, Validators.min(1)]],
       type: ['', Validators.required],
       message: ['', Validators.required],
@@ -43,14 +39,6 @@ export class CreateCouponComponent implements OnInit {
       image: ['', Validators.required]
     });
   }
-
-  /*beforeToday(control: FormControl): {[key: string]: boolean} {
-    if (control.value < this.currentDate) {
-      console.log(control.value)
-      return {"date": true};
-    }
-    return null;
-  }*/
 
   //add coupon to DB
   addCoupon(){

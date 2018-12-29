@@ -10,6 +10,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Component;
 
@@ -34,11 +35,10 @@ public class CompanyFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
+        HttpSession session = req.getSession(false);
         
-        if (req.getSession().getAttribute("facade") == null) {           	
+        if (session == null || session.getAttribute("CompanyFacade") == null || !(session.getAttribute("CompanyFacade") instanceof CompanyFacadeInterface)) {
             res.sendRedirect("http://localhost:8080/login.html");
-        } else if(!(req.getSession().getAttribute("facade") instanceof CompanyFacadeInterface)){
-        	res.sendRedirect("http://localhost:8080/login.html");
         } else {
             chain.doFilter(request, response);
         }		

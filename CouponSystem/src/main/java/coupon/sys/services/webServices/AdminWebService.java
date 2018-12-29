@@ -40,7 +40,7 @@ public class AdminWebService {
 	 * @throws @CouponSystemException
 	 */
 	private ClientFacade getFacade(HttpServletRequest request) throws CouponSystemException {
-		AdminFacade adminFacade = (AdminFacade) request.getSession().getAttribute("facade");
+		AdminFacade adminFacade = (AdminFacade) request.getSession().getAttribute("AdminFacade");
 		return adminFacade;
 	}
 	

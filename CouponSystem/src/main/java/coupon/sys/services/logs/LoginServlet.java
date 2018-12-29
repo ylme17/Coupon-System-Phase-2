@@ -35,13 +35,14 @@ public class LoginServlet {
 				return "redirect:http://localhost:8080/login.html";
 			}
 			
-			request.getSession().setAttribute("facade", clientFacade);
-			
 			if(clientFacade instanceof AdminFacadeInterface) {
+				request.getSession().setAttribute("AdminFacade", clientFacade);
 				return "redirect:http://localhost:8080/admin/index.html";
 			} else if(clientFacade instanceof CompanyFacadeInterface) {
+				request.getSession().setAttribute("CompanyFacade", clientFacade);
 				return "redirect:http://localhost:8080/company/index.html";
 			} else if(clientFacade instanceof CustomerFacadeInterface) {
+				request.getSession().setAttribute("CustomerFacade", clientFacade);
 				return "redirect:http://localhost:8080/customer/index.html";
 			}
 			return "redirect:http://localhost:8080/login.html";

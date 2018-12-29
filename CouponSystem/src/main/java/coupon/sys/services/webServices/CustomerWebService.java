@@ -39,7 +39,7 @@ public class CustomerWebService {
 	 * @throws @CouponSystemException
 	 */
 	private ClientFacade getFacade(HttpServletRequest request) throws CouponSystemException {
-		CustomerFacade customerFacade = (CustomerFacade) request.getSession().getAttribute("facade");
+		CustomerFacade customerFacade = (CustomerFacade) request.getSession().getAttribute("CustomerFacade");
 		return customerFacade;
 	}
 	
