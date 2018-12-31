@@ -2,7 +2,8 @@ package coupon.sys.services.webServices;
 
 import java.util.Collection;
 
-import org.apache.catalina.servlet4preview.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

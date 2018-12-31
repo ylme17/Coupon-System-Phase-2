@@ -5,7 +5,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Properties;
 import java.util.Set;
 
 import coupon.sys.core.exceptions.ConnectionPoolException;
@@ -32,9 +31,6 @@ public class ConnectionPool {
 	private ConnectionPool() throws ConnectionPoolException {
 		try {
 			for (int i = 0; i < POOL_SIZE; i++) {
-				Properties pr = System.getProperties();
-				pr.put("derby.properties", "C:\\JavaServers\\db-derby-10.14.2.0-bin\\bin");
-				
 				Connection con = DriverManager.getConnection(URL);
 				connections.add(con);
 			}
