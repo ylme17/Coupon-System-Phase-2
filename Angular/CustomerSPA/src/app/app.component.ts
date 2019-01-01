@@ -25,7 +25,7 @@ export class AppComponent {
     subscribe(
       (resp)=>
       {
-        window.location.href = 'http://localhost:8080/login.html';
+        window.location.href = this._sharedDataService.loginPageURL;
       }
     )
   }

@@ -13,7 +13,7 @@ export class GetInfoComponent implements OnInit {
   public customerGet : Customer = new Customer(0, "", "");
 
   //provide SharedDataService for service
-  constructor(private _sharedData:SharedDataService) {
+  constructor(private _sharedDataService:SharedDataService) {
   }
 
   //load customer info
@@ -23,7 +23,7 @@ export class GetInfoComponent implements OnInit {
 
   //get customer info
   getCustomerInfo(){
-    this._sharedData.getInfo().
+    this._sharedDataService.getInfo().
     subscribe(
       (resp)=>
       {
@@ -31,11 +31,15 @@ export class GetInfoComponent implements OnInit {
       },
       (err) =>
       {
-        swal({
-          type: 'error',
-          title: 'Oops...',
-          text: err._body
-        })
+        if(err.status == 403) {
+          window.location.href = this._sharedDataService.loginPageURL;
+        }else{
+          swal({
+            type: 'error',
+            title: 'Oops...',
+            text: err._body
+          })
+        }
       }
     )
   }

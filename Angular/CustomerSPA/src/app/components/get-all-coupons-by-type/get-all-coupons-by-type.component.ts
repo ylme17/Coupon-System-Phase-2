@@ -45,11 +45,15 @@ export class GetAllCouponsByTypeComponent implements OnInit {
           },
           (err) =>
           {
-            swal({
-              type: 'error',
-              title: 'Oops...',
-              text: err._body
-            })
+            if(err.status == 403) {
+              window.location.href = this._sharedDataService.loginPageURL;
+            }else{
+              swal({
+                type: 'error',
+                title: 'Oops...',
+                text: err._body
+              })
+            }
           }
         )
       }
@@ -67,11 +71,15 @@ export class GetAllCouponsByTypeComponent implements OnInit {
       },
       (err) =>
       {
-        swal({
-          type: 'error',
-          title: 'Oops...',
-          text: err._body
-        })
+        if(err.status == 403) {
+          window.location.href = this._sharedDataService.loginPageURL;
+        }else{
+          swal({
+            type: 'error',
+            title: 'Oops...',
+            text: err._body
+          })
+        }
       }
     )
   }
@@ -112,11 +120,15 @@ export class GetAllCouponsByTypeComponent implements OnInit {
       },
       (err) =>
       {
-        swal({
-          type: 'error',
-          title: 'Oops...',
-          text: err._body
-        })
+        if(err.status == 403) {
+          window.location.href = this._sharedDataService.loginPageURL;
+        }else{
+          swal({
+            type: 'error',
+            title: 'Oops...',
+            text: err._body
+          })
+        }
       }
     )
   }
@@ -131,11 +143,15 @@ export class GetAllCouponsByTypeComponent implements OnInit {
       },
       (err) =>
       {
-        swal({
-          type: 'error',
-          title: 'Oops...',
-          text: err._body
-        })
+        if(err.status == 403) {
+          window.location.href = this._sharedDataService.loginPageURL;
+        }else{
+          swal({
+            type: 'error',
+            title: 'Oops...',
+            text: err._body
+          })
+        }
       }
     )
   }
@@ -171,21 +187,29 @@ export class GetAllCouponsByTypeComponent implements OnInit {
               },
               (err) =>
               {
-                swal({
-                  type: 'error',
-                  title: 'Oops...',
-                  text: err._body
-                })
+                if(err.status == 403) {
+                  window.location.href = this._sharedDataService.loginPageURL;
+                }else{
+                  swal({
+                    type: 'error',
+                    title: 'Oops...',
+                    text: err._body
+                  })
+                }
               }
             )
           },
           (err) =>
           {
-            swal({
-              type: 'error',
-              title: 'Oops...',
-              text: err._body
-            })
+            if(err.status == 403) {
+              window.location.href = this._sharedDataService.loginPageURL;
+            }else{
+              swal({
+                type: 'error',
+                title: 'Oops...',
+                text: err._body
+              })
+            }
           }
         )
       }

@@ -39,7 +39,7 @@ public class Test {
 			Customer chaim = new Customer("chaim", "123456");
 			
 			Date today = CurrentDate.getCurrentDate();
-			Date date1 = new GregorianCalendar(2018, Calendar.DECEMBER, 30).getTime();
+			Date date1 = new GregorianCalendar(2019, Calendar.MARCH, 30).getTime();
 			Date date2 = new GregorianCalendar(2019, Calendar.JANUARY, 30).getTime();
 			Date date3 = new GregorianCalendar(2019, Calendar.JANUARY, 15).getTime();
 			Date date4 = new GregorianCalendar(2019, Calendar.FEBRUARY, 30).getTime();

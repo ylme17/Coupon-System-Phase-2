@@ -13,18 +13,18 @@ export class AppComponent {
   response : Response
 
   //provide SharedCompanyDataService for service
-  constructor(private _sharedCompanyDataService:SharedCompanyDataService) {  }
+  constructor(private _sharedDataService:SharedCompanyDataService) {  }
 
   ngOnInit(){
   }
 
   //log out method, send the client to login page
   logOut(){
-    this._sharedCompanyDataService.logOut(this.request, this.response).
+    this._sharedDataService.logOut(this.request, this.response).
     subscribe(
       (resp)=>
       {
-        window.location.href = 'http://localhost:8080/login.html';
+        window.location.href = this._sharedDataService.loginPageURL;
       }
     )
   }

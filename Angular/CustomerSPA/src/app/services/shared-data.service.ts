@@ -7,41 +7,42 @@ import { Coupon } from '../common/Coupon';
 })
 export class SharedDataService {
 
-  coupons : Coupon[]
+  customerURL = "http://localhost:8080/customer";
+  loginPageURL = "http://localhost:8080/login.html";
 
   //provide SharedDataService for service
   constructor(private _http:Http) { }
 
   buyCoupon(coupon : Coupon){
-    return this._http.post("http://localhost:8080/customer/coupon", coupon);
+    return this._http.post(this.customerURL+"/coupon", coupon);
   }
 
   getPurchasedCoupons(){
-    return this._http.get("http://localhost:8080/customer/coupon/purchased");
+    return this._http.get(this.customerURL+"/coupon/purchased");
   }
 
   getPurchasedByType(type : string){
-    return this._http.get("http://localhost:8080/customer/coupon/purchased/type="+type);
+    return this._http.get(this.customerURL+"/coupon/purchased/type="+type);
   }
 
   getPurchasedByPrice(price : number){
-    return this._http.get("http://localhost:8080/customer/coupon/purchased/price="+price);
+    return this._http.get(this.customerURL+"/coupon/purchased/price="+price);
   }
 
   getInfo(){
-    return this._http.get("http://localhost:8080/customer/info");
+    return this._http.get(this.customerURL+"/info");
   }
 
   getAllCoupons(){
-    return this._http.get("http://localhost:8080/customer/coupon/all");
+    return this._http.get(this.customerURL+"/coupon/all");
   }
 
   getAllByType(type : string){
-    return this._http.get("http://localhost:8080/customer/coupon/all/type="+type);
+    return this._http.get(this.customerURL+"/coupon/all/type="+type);
   }
 
   getCoupon(id : number){
-    return this._http.get("http://localhost:8080/customer/coupon/"+id);
+    return this._http.get(this.customerURL+"/coupon/"+id);
   }
 
   logOut(request, response){

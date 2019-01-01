@@ -156,9 +156,10 @@ var AppComponent = /** @class */ (function () {
     };
     //log out method, send the client to login page
     AppComponent.prototype.logOut = function () {
+        var _this = this;
         this._sharedDataService.logOut(this.request, this.response).
             subscribe(function (resp) {
-            window.location.href = 'http://localhost:8080/login.html';
+            window.location.href = _this._sharedDataService.loginPageURL;
         });
     };
     AppComponent = __decorate([
@@ -389,11 +390,16 @@ var GetAllCouponsByTypeComponent = /** @class */ (function () {
                 _this.couponsByType = resp.json();
                 _this.getPurchasedCoupons();
             }, function (err) {
-                sweetalert2__WEBPACK_IMPORTED_MODULE_4___default()({
-                    type: 'error',
-                    title: 'Oops...',
-                    text: err._body
-                });
+                if (err.status == 403) {
+                    window.location.href = _this._sharedDataService.loginPageURL;
+                }
+                else {
+                    sweetalert2__WEBPACK_IMPORTED_MODULE_4___default()({
+                        type: 'error',
+                        title: 'Oops...',
+                        text: err._body
+                    });
+                }
             });
         });
     };
@@ -405,11 +411,16 @@ var GetAllCouponsByTypeComponent = /** @class */ (function () {
             _this.purchasedCoupons = resp.json();
             _this.compareCoupons();
         }, function (err) {
-            sweetalert2__WEBPACK_IMPORTED_MODULE_4___default()({
-                type: 'error',
-                title: 'Oops...',
-                text: err._body
-            });
+            if (err.status == 403) {
+                window.location.href = _this._sharedDataService.loginPageURL;
+            }
+            else {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_4___default()({
+                    type: 'error',
+                    title: 'Oops...',
+                    text: err._body
+                });
+            }
         });
     };
     //compare between allCoupons array and purchasedCoupon array and check if coupon already purchased
@@ -444,11 +455,16 @@ var GetAllCouponsByTypeComponent = /** @class */ (function () {
             _this.getPurchasedCoupons();
             _this.couponsGet = new _common_Coupon__WEBPACK_IMPORTED_MODULE_2__["Coupon"](null, "", null, null, null, "", "", null, "", null);
         }, function (err) {
-            sweetalert2__WEBPACK_IMPORTED_MODULE_4___default()({
-                type: 'error',
-                title: 'Oops...',
-                text: err._body
-            });
+            if (err.status == 403) {
+                window.location.href = _this._sharedDataService.loginPageURL;
+            }
+            else {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_4___default()({
+                    type: 'error',
+                    title: 'Oops...',
+                    text: err._body
+                });
+            }
         });
     };
     //get coupon when popup window open
@@ -458,11 +474,16 @@ var GetAllCouponsByTypeComponent = /** @class */ (function () {
             subscribe(function (resp) {
             _this.couponOpen = resp.json();
         }, function (err) {
-            sweetalert2__WEBPACK_IMPORTED_MODULE_4___default()({
-                type: 'error',
-                title: 'Oops...',
-                text: err._body
-            });
+            if (err.status == 403) {
+                window.location.href = _this._sharedDataService.loginPageURL;
+            }
+            else {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_4___default()({
+                    type: 'error',
+                    title: 'Oops...',
+                    text: err._body
+                });
+            }
         });
     };
     //buy coupon
@@ -491,18 +512,28 @@ var GetAllCouponsByTypeComponent = /** @class */ (function () {
                         _this.couponsByType = resp.json();
                         _this.getPurchasedCoupons();
                     }, function (err) {
+                        if (err.status == 403) {
+                            window.location.href = _this._sharedDataService.loginPageURL;
+                        }
+                        else {
+                            sweetalert2__WEBPACK_IMPORTED_MODULE_4___default()({
+                                type: 'error',
+                                title: 'Oops...',
+                                text: err._body
+                            });
+                        }
+                    });
+                }, function (err) {
+                    if (err.status == 403) {
+                        window.location.href = _this._sharedDataService.loginPageURL;
+                    }
+                    else {
                         sweetalert2__WEBPACK_IMPORTED_MODULE_4___default()({
                             type: 'error',
                             title: 'Oops...',
                             text: err._body
                         });
-                    });
-                }, function (err) {
-                    sweetalert2__WEBPACK_IMPORTED_MODULE_4___default()({
-                        type: 'error',
-                        title: 'Oops...',
-                        text: err._body
-                    });
+                    }
                 });
             }
         });
@@ -599,11 +630,16 @@ var GetAllCouponsComponent = /** @class */ (function () {
             _this.allCoupons = resp.json();
             _this.getPurchasedCoupons();
         }, function (err) {
-            sweetalert2__WEBPACK_IMPORTED_MODULE_4___default()({
-                type: 'error',
-                title: 'Oops...',
-                text: err._body
-            });
+            if (err.status == 403) {
+                window.location.href = _this._sharedDataService.loginPageURL;
+            }
+            else {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_4___default()({
+                    type: 'error',
+                    title: 'Oops...',
+                    text: err._body
+                });
+            }
         });
     };
     //get customer info
@@ -613,11 +649,16 @@ var GetAllCouponsComponent = /** @class */ (function () {
             subscribe(function (resp) {
             _this.customerGet = resp.json();
         }, function (err) {
-            sweetalert2__WEBPACK_IMPORTED_MODULE_4___default()({
-                type: 'error',
-                title: 'Oops...',
-                text: err._body
-            });
+            if (err.status == 403) {
+                window.location.href = _this._sharedDataService.loginPageURL;
+            }
+            else {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_4___default()({
+                    type: 'error',
+                    title: 'Oops...',
+                    text: err._body
+                });
+            }
         });
     };
     //get purchased coupons
@@ -670,11 +711,16 @@ var GetAllCouponsComponent = /** @class */ (function () {
                     });
                     _this.getCoupons();
                 }, function (err) {
-                    sweetalert2__WEBPACK_IMPORTED_MODULE_4___default()({
-                        type: 'error',
-                        title: 'Oops...',
-                        text: err._body
-                    });
+                    if (err.status == 403) {
+                        window.location.href = _this._sharedDataService.loginPageURL;
+                    }
+                    else {
+                        sweetalert2__WEBPACK_IMPORTED_MODULE_4___default()({
+                            type: 'error',
+                            title: 'Oops...',
+                            text: err._body
+                        });
+                    }
                 });
             }
         });
@@ -690,11 +736,16 @@ var GetAllCouponsComponent = /** @class */ (function () {
             subscribe(function (resp) {
             _this.couponOpen = resp.json();
         }, function (err) {
-            sweetalert2__WEBPACK_IMPORTED_MODULE_4___default()({
-                type: 'error',
-                title: 'Oops...',
-                text: err._body
-            });
+            if (err.status == 403) {
+                window.location.href = _this._sharedDataService.loginPageURL;
+            }
+            else {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_4___default()({
+                    type: 'error',
+                    title: 'Oops...',
+                    text: err._body
+                });
+            }
         });
     };
     GetAllCouponsComponent = __decorate([
@@ -799,11 +850,16 @@ var GetCouponsByPriceComponent = /** @class */ (function () {
             _this.showSearch = true;
             _this.couponsGet = new _common_Coupon__WEBPACK_IMPORTED_MODULE_2__["Coupon"](null, "", null, null, null, "", "", null, "", null);
         }, function (err) {
-            sweetalert2__WEBPACK_IMPORTED_MODULE_4___default()({
-                type: 'error',
-                title: 'Oops...',
-                text: err._body
-            });
+            if (err.status == 403) {
+                window.location.href = _this._sharedDataService.loginPageURL;
+            }
+            else {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_4___default()({
+                    type: 'error',
+                    title: 'Oops...',
+                    text: err._body
+                });
+            }
         });
     };
     //route to all coupons component
@@ -821,11 +877,16 @@ var GetCouponsByPriceComponent = /** @class */ (function () {
             subscribe(function (resp) {
             _this.couponOpen = resp.json();
         }, function (err) {
-            sweetalert2__WEBPACK_IMPORTED_MODULE_4___default()({
-                type: 'error',
-                title: 'Oops...',
-                text: err._body
-            });
+            if (err.status == 403) {
+                window.location.href = _this._sharedDataService.loginPageURL;
+            }
+            else {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_4___default()({
+                    type: 'error',
+                    title: 'Oops...',
+                    text: err._body
+                });
+            }
         });
     };
     GetCouponsByPriceComponent = __decorate([
@@ -916,11 +977,16 @@ var GetCouponsByTypeComponent = /** @class */ (function () {
             _this.showSearch = true;
             _this.couponsGet = new _common_Coupon__WEBPACK_IMPORTED_MODULE_2__["Coupon"](null, "", null, null, null, "", "", null, "", null);
         }, function (err) {
-            sweetalert2__WEBPACK_IMPORTED_MODULE_4___default()({
-                type: 'error',
-                title: 'Oops...',
-                text: err._body
-            });
+            if (err.status == 403) {
+                window.location.href = _this._sharedDataService.loginPageURL;
+            }
+            else {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_4___default()({
+                    type: 'error',
+                    title: 'Oops...',
+                    text: err._body
+                });
+            }
         });
     };
     //route to all coupons component
@@ -938,11 +1004,16 @@ var GetCouponsByTypeComponent = /** @class */ (function () {
             subscribe(function (resp) {
             _this.couponOpen = resp.json();
         }, function (err) {
-            sweetalert2__WEBPACK_IMPORTED_MODULE_4___default()({
-                type: 'error',
-                title: 'Oops...',
-                text: err._body
-            });
+            if (err.status == 403) {
+                window.location.href = _this._sharedDataService.loginPageURL;
+            }
+            else {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_4___default()({
+                    type: 'error',
+                    title: 'Oops...',
+                    text: err._body
+                });
+            }
         });
     };
     GetCouponsByTypeComponent = __decorate([
@@ -1012,8 +1083,8 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 var GetInfoComponent = /** @class */ (function () {
     //provide SharedDataService for service
-    function GetInfoComponent(_sharedData) {
-        this._sharedData = _sharedData;
+    function GetInfoComponent(_sharedDataService) {
+        this._sharedDataService = _sharedDataService;
         this.customerGet = new _common_Customer__WEBPACK_IMPORTED_MODULE_2__["Customer"](0, "", "");
     }
     //load customer info
@@ -1023,15 +1094,20 @@ var GetInfoComponent = /** @class */ (function () {
     //get customer info
     GetInfoComponent.prototype.getCustomerInfo = function () {
         var _this = this;
-        this._sharedData.getInfo().
+        this._sharedDataService.getInfo().
             subscribe(function (resp) {
             _this.customerGet = resp.json();
         }, function (err) {
-            sweetalert2__WEBPACK_IMPORTED_MODULE_3___default()({
-                type: 'error',
-                title: 'Oops...',
-                text: err._body
-            });
+            if (err.status == 403) {
+                window.location.href = _this._sharedDataService.loginPageURL;
+            }
+            else {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_3___default()({
+                    type: 'error',
+                    title: 'Oops...',
+                    text: err._body
+                });
+            }
         });
     };
     GetInfoComponent = __decorate([
@@ -1119,11 +1195,16 @@ var GetPurchasedCouponsComponent = /** @class */ (function () {
             subscribe(function (resp) {
             _this.purchasedCoupons = resp.json();
         }, function (err) {
-            sweetalert2__WEBPACK_IMPORTED_MODULE_4___default()({
-                type: 'error',
-                title: 'Oops...',
-                text: err._body
-            });
+            if (err.status == 403) {
+                window.location.href = _this._sharedDataService.loginPageURL;
+            }
+            else {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_4___default()({
+                    type: 'error',
+                    title: 'Oops...',
+                    text: err._body
+                });
+            }
         });
     };
     //route to coupons by price component
@@ -1141,11 +1222,16 @@ var GetPurchasedCouponsComponent = /** @class */ (function () {
             subscribe(function (resp) {
             _this.couponOpen = resp.json();
         }, function (err) {
-            sweetalert2__WEBPACK_IMPORTED_MODULE_4___default()({
-                type: 'error',
-                title: 'Oops...',
-                text: err._body
-            });
+            if (err.status == 403) {
+                window.location.href = _this._sharedDataService.loginPageURL;
+            }
+            else {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_4___default()({
+                    type: 'error',
+                    title: 'Oops...',
+                    text: err._body
+                });
+            }
         });
     };
     GetPurchasedCouponsComponent = __decorate([
@@ -1237,30 +1323,32 @@ var SharedDataService = /** @class */ (function () {
     //provide SharedDataService for service
     function SharedDataService(_http) {
         this._http = _http;
+        this.customerURL = "http://localhost:8080/customer";
+        this.loginPageURL = "http://localhost:8080/login.html";
     }
     SharedDataService.prototype.buyCoupon = function (coupon) {
-        return this._http.post("http://localhost:8080/customer/coupon", coupon);
+        return this._http.post(this.customerURL + "/coupon", coupon);
     };
     SharedDataService.prototype.getPurchasedCoupons = function () {
-        return this._http.get("http://localhost:8080/customer/coupon/purchased");
+        return this._http.get(this.customerURL + "/coupon/purchased");
     };
     SharedDataService.prototype.getPurchasedByType = function (type) {
-        return this._http.get("http://localhost:8080/customer/coupon/purchased/type=" + type);
+        return this._http.get(this.customerURL + "/coupon/purchased/type=" + type);
     };
     SharedDataService.prototype.getPurchasedByPrice = function (price) {
-        return this._http.get("http://localhost:8080/customer/coupon/purchased/price=" + price);
+        return this._http.get(this.customerURL + "/coupon/purchased/price=" + price);
     };
     SharedDataService.prototype.getInfo = function () {
-        return this._http.get("http://localhost:8080/customer/info");
+        return this._http.get(this.customerURL + "/info");
     };
     SharedDataService.prototype.getAllCoupons = function () {
-        return this._http.get("http://localhost:8080/customer/coupon/all");
+        return this._http.get(this.customerURL + "/coupon/all");
     };
     SharedDataService.prototype.getAllByType = function (type) {
-        return this._http.get("http://localhost:8080/customer/coupon/all/type=" + type);
+        return this._http.get(this.customerURL + "/coupon/all/type=" + type);
     };
     SharedDataService.prototype.getCoupon = function (id) {
-        return this._http.get("http://localhost:8080/customer/coupon/" + id);
+        return this._http.get(this.customerURL + "/coupon/" + id);
     };
     SharedDataService.prototype.logOut = function (request, response) {
         return this._http.post("http://localhost:8080/logout", request, response);
@@ -1339,7 +1427,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\PC\Desktop\Angular\CouponSystem\CustomerSPA\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\PC\Desktop\Angular\CouponSystem\customerspa\src\main.ts */"./src/main.ts");
 
 
 /***/ })
